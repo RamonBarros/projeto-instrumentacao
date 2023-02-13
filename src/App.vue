@@ -25,10 +25,13 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   width: 100%;
   height: 100%;
 }
 
+.content{
+    display: flex;
+    justify-content: flex-start;
+}
 </style>
