@@ -46,6 +46,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
 .input{
     background-color: #064B15;
@@ -73,7 +74,7 @@ export default {
     border-radius: 30px;
     width: 8vw;
     height: 5vh;
-    font-size: 3vh;
+    font-size: 2vw;
     
 }
 

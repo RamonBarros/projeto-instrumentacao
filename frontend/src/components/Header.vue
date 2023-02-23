@@ -30,7 +30,7 @@ export default {
     height: 20vh;
     margin-top: 0;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
 }
 
@@ -47,9 +47,10 @@ export default {
     justify-content: center;
     align-items: center;
     color: #064B15;
-    margin: 5rem;
+    margin-left: 75vw;
     font-size: 3rem;
     border-radius: 40px;
+    position: absolute;
 }
     
 </style>
