@@ -33,6 +33,7 @@
 </template>
 <script>
 import Header from "../components/Header.vue"
+import { auth } from '../firebase/index.js'
 
 import {
   Chart as ChartJS,
@@ -98,8 +99,10 @@ export default {
         }
     },
     mounted(){
-
-    },
+    if(auth.currentUser){
+      console.log("logado")
+    }
+  },
     computed: {
     myStyles () {
       return {

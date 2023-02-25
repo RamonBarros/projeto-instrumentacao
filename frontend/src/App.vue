@@ -3,9 +3,27 @@
 </template>
 
 <script>
+import { auth } from './firebase/index.js';
 
+export default {
+  data() {
+    return {
+    }
+  },
+  mounted() {
+    if(auth.currentUser){
+      console.log(auth.currentUser)
+    } else(
+      this.$router.push('/')
+    )
+  }
+
+
+ 
+}
 
 </script>
+
 
 <style>
 body {

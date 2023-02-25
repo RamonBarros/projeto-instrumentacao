@@ -1,25 +1,47 @@
 <template >
     <div class="main">
         <div class="box-login">
+            <form @submit.prevent="login()">
             <p class="login-label">Tela de Login</p>
             <div class="input-box">
-                <input class="input" type="text" placeholder="Usuario">
-                <input class="input" type="text" placeholder="Senha">
+                <input class="input" type="email" placeholder="Usuario" required v-model="email">
+                <input class="input" type="password" placeholder="Senha" required v-model="password">
             </div>
             <p class="signup-label">Não tem uma conta?</p>
-            <button class="login-btn" @click="goToHome()">Entrar</button>
+            <button class="login-btn" @click="login">Entrar</button>
+        </form>
         </div>
         
     </div>
 </template>
 
 <script>
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../firebase/index.js'
 export default {
-    methods:{
-        goToHome(){
-            this.$router.push('/home')
+    data(){
+        return{
+            email:"",
+            password:"",
+            displayName:""
         }
+    },
+    
+    methods:{
+        login(){
+            signInWithEmailAndPassword(auth,this.email,this.password)
+            .then(()=>{
+                this.$emit('loggedIn')
+                this.$router.push('/home')
+            })
+            
+        }
+    },
+    beforeUpdate(){
+    if(auth.currentUser){
+      this.displayName= auth.currentUser.displayName
     }
+  }
     
 }
 </script>

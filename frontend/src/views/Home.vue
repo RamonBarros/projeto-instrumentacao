@@ -12,6 +12,7 @@
 
 <script>
 import Header from "../components/Header.vue"
+import { auth } from '../firebase/index.js'
 export default {
     components:{
         Header
@@ -26,9 +27,14 @@ export default {
     },
     data(){
         return{
-            title:"Nome da Aplicação"
+            title:"Bem Vindo(a)"
         }
+    },
+    mounted(){
+    if(auth.currentUser){
+      console.log("logado")
     }
+  }
 }
 </script>
 
