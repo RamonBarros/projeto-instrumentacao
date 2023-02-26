@@ -4,18 +4,39 @@
 
 <script>
 import { auth } from './firebase/index.js';
+import {db} from "./firebase/index.js";
+import { ref, onValue, get, child} from "firebase/database";
 
 export default {
   data() {
     return {
+      
     }
   },
   mounted() {
+
     if(auth.currentUser){
-      console.log(auth.currentUser)
+      console.log("logado")
     } else(
       this.$router.push('/')
     )
+  },
+  created(){
+
+    const dados= ref(db)
+    
+    onValue(dados,(snapshot)=>{
+      const data = snapshot.val().stats;
+      console.log(data)
+      // console.log(data.air_humidity)
+      // get(child(dados,`stats/`)).then((snapshot) => {
+      //   if(snapshot.exists()){
+      //     console.log(snapshot.val())
+      //   }else{
+      //     console.log("não existe")
+      //   }
+      // })
+    })
   }
 
 

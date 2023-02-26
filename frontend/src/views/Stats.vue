@@ -34,6 +34,8 @@
 <script>
 import Header from "../components/Header.vue"
 import { auth } from '../firebase/index.js'
+import { ref, onValue} from "firebase/database";
+import {db} from "@/firebase/index.js"
 
 import {
   Chart as ChartJS,
@@ -92,17 +94,32 @@ export default {
                 responsive: true,
             },
 
-            Ground_Temperature:29,
-            Ground_Humidity:60,
-            Air_Temperature:27,
-            Air_Humidity:50,
+            Ground_Temperature:"",
+            Ground_Humidity:"",
+            Air_Temperature:"",
+            Air_Humidity:"",
+            Stats_Vector:[],
         }
     },
     mounted(){
     if(auth.currentUser){
       console.log("logado")
     }
+
   },
+  created(){
+
+    const dados= ref(db)
+
+    onValue(dados,(snapshot)=>{
+    const data = snapshot.val().stats;
+        this.Ground_Temperature=snapshot.val().stats.ground_temperature;
+        this.Ground_Humidity=snapshot.val().stats.ground_humidity;
+        this.Air_Temperature=snapshot.val().stats.air_temperature;
+        this.Air_Humidity=snapshot.val().stats.air_humidity;
+        console.log(data)
+    })
+},
     computed: {
     myStyles () {
       return {

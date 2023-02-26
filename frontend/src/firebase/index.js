@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getDatabase } from "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -14,10 +15,14 @@ const firebaseConfig = {
   storageBucket: "proj-instrumentacao.appspot.com",
   messagingSenderId: "537585150415",
   appId: "1:537585150415:web:32e3c728fa7610dbfe8aba",
-  measurementId: "G-8RZD106MS8"
+  measurementId: "G-8RZD106MS8",
+  databaseURL: "https://proj-instrumentacao-default-rtdb.firebaseio.com/",
+  
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
+// Initialize Realtime Database and get a reference to the service
+export const db = getDatabase(app);
