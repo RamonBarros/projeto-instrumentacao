@@ -20,7 +20,8 @@
                     <span class="config-air-humidity-max-value">{{ Max_Air_Humidity }} %</span>
                 </div>
                 <div class="config-ground-temperature">
-                    <font-awesome-icon icon="fa-solid fa-temperature-low" />
+                    <!-- <font-awesome-icon icon="fa-solid fa-temperature-low" /> -->
+                    <font-awesome-icon icon="fa-solid fa-temperature-high" />
                     <span class="config-ground-temperature-label">Temperatura do solo:</span>
                     <span class="config-stat-label">Min</span>
                     <span class="config-ground-temperature-min-value">{{ Min_Ground_Temperature }} °C</span>
@@ -36,12 +37,18 @@
                     <span class="config-air-temperature-max-value">{{ Max_Air_Temperature }} °C</span>
                 </div>
             </div>
-
+            <div class="config-buttons-container">
+                <button class="config-button">Editar</button>
+                <button class="config-button" @click="updateConfig()">Salvar</button>
+                <button class="config-button">Cancelar</button>
+            </div>
        </div>
     </div>
 </template>
 <script>
 import Header from "../components/Header.vue"
+import { ref, set, onValue, child, push, update } from "firebase/database";
+import {db} from "@/firebase/index.js"
 export default {
     components:{
         Header
@@ -57,9 +64,65 @@ export default {
             Min_Air_Temperature:"15",
             Max_Air_Humidity:"70",
             Min_Air_Humidity:"20",
+            Max_Ground_Temperature_Input:"",
+            Min_Ground_Temperature_Input:"",
+            Max_Ground_Humidity_Input:"",
+            Min_Ground_Humidity_Input:"",
+            Max_Air_Temperature_Input:"",
+            Min_Air_Temperature_Input:"",
+            Max_Air_Humidity_Input:"",
+            Min_Air_Humidity_Input:"",
+            configs:[
+            // Max_Ground_Temperature_Input,
+            // Min_Ground_Temperature_Input,
+            // Max_Ground_Humidity_Input,
+            // Min_Ground_Humidity_Input,
+            // Max_Air_Temperature_Input,
+            // Min_Air_Temperature_Input,
+            // Max_Air_Humidity_Input,
+            // Min_Air_Humidity_Input
+
+            ]
         }
+    },
+    methods:{
+        updateConfig() {
+            const dados= ref(db)
+
+            update(ref(db, 'config/'), {
+                max_ground_temperature:"32",
+                min_ground_temperature:"19",
+                max_ground_humidity:"75",
+                min_ground_humidity:"50",
+                max_air_temperature:"55",
+                min_air_temperature:"15",
+                max_air_humidity:"60",
+                min_air_humidity:"20",
+            });
+            alert("Configurações Atualizadas com Sucesso!!!")
+        }
+        
+    },
+    created(){
+       
+        const dados= ref(db)
+
+        onValue(dados,(snapshot)=>{
+                const data = snapshot.val().config;
+                this.Max_Ground_Temperature=snapshot.val().config.max_ground_temperature;
+                this.Min_Ground_Temperature=snapshot.val().config.min_ground_temperature;
+                this.Max_Ground_Humidity=snapshot.val().config.max_ground_humidity;
+                this.Min_Ground_Humidity=snapshot.val().config.min_ground_humidity;
+                this.Max_Air_Temperature=snapshot.val().config.max_air_temperature;
+                this.Min_Air_Temperature=snapshot.val().config.min_air_temperature;
+                this.Max_Air_Humidity=snapshot.val().config.max_air_humidity;
+                this.Min_Air_Humidity=snapshot.val().config.min_air_humidity;
+                
+            })
+
     }
 }
+
 </script>
 <style scoped>
     .content{
@@ -113,6 +176,16 @@ export default {
 
     .fa-temperature-high,.fa-temperature-low{
         color:#ff0000
+    }
+
+    .config-button{
+        background-color: #064B15;
+        color: #ffff;
+        font-size: 1.5rem;
+        width: 12vw;
+        height: 5vh;
+        margin: 1rem;
+        border-radius: 50px;
     }
 
 </style>
