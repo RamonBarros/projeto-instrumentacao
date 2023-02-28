@@ -54,11 +54,11 @@ export default {
 }
 .box-login{
     display: flex;
-    /* justify-content: center; */
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    width: 70vh;
-    height: 40vh;
+    width: 65vh;
+    height: 35vh;
     border-radius: 50px;
     background-color: #fff;
 }
@@ -74,7 +74,7 @@ export default {
     background-color: #064B15;
     border-radius: 30px;
     width: 25vw;
-    height: 3vh;
+    height: 3.5vh;
     margin: 0.8vw;
     color: #fff;
     padding-left: 10px;
@@ -86,17 +86,17 @@ export default {
 }
 
 .login-label{
-    font-size: 5vh;
-    margin-bottom: 0;
+    font-size: 3vw;
+    margin: 1rem 1rem 0rem 5rem;
 }
 
 .login-btn{
     background-color: #064B15;
     color: #fff; 
     border-radius: 30px;
-    width: 8vw;
+    width: 7w;
     height: 5vh;
-    font-size: 2vw;
+    font-size: 1.5vw;
     
 }
 
