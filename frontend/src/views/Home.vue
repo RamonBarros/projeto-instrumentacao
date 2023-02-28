@@ -4,7 +4,7 @@
        <div class="content">
            <div class="plant-button-container">
                <button class="plant-button" @click="goToStats()">Cebolinha</button>
-               <button class="plant-config-button" @click="goToConfig()">Icone</button>
+               <button class="plant-config-button" @click="goToConfig()"><font-awesome-icon icon="fa-solid fa-gear" /></button>
            </div>
        </div>
     </div>
@@ -40,6 +40,10 @@ export default {
 
 <style scoped>
 
+.fa-gear{
+    width: auto;
+    height: auto;
+}
 .plant-button-container{
     display: flex;
     justify-content: center;

@@ -4,23 +4,35 @@
        <div class="content">
             <div class="config-stats">
                 <div class="config-ground-humidity">
+                    <font-awesome-icon icon="fa-solid fa-droplet" />
                     <span class="config-ground-humidity-label">Umidade do solo:</span>
+                    <span class="config-stat-label">Min</span>
                     <span class="config-ground-humidity-min-value">{{ Min_Ground_Humidity }} %</span>
+                    <span class="config-stat-label">Max</span>
                     <span class="config-ground-humidity-max-value">{{ Max_Ground_Humidity }} %</span>
                 </div>
                 <div class="config-air-humidity">
+                    <font-awesome-icon icon="fa-solid fa-droplet" />
                     <span class="config-air-humidity-label">Umidade Ambiente:</span>
+                    <span class="config-stat-label">Min</span>
                     <span class="config-air-humidity-min-value">{{ Min_Air_Humidity }} %</span>
+                    <span class="config-stat-label">Max</span>
                     <span class="config-air-humidity-max-value">{{ Max_Air_Humidity }} %</span>
                 </div>
                 <div class="config-ground-temperature">
+                    <font-awesome-icon icon="fa-solid fa-temperature-low" />
                     <span class="config-ground-temperature-label">Temperatura do solo:</span>
+                    <span class="config-stat-label">Min</span>
                     <span class="config-ground-temperature-min-value">{{ Min_Ground_Temperature }} °C</span>
+                    <span class="config-stat-label">Max</span>
                     <span class="config-ground-temperature-max-value">{{ Max_Ground_Temperature }} °C</span>
                 </div>
                 <div class="config-air-temperature">
+                    <font-awesome-icon icon="fa-solid fa-temperature-high" />
                     <span class="config-air-temperature-label">Temperatura Ambiente:</span>
+                    <span class="config-stat-label">Min</span>
                     <span class="config-air-temperature-min-value">{{ Min_Air_Temperature }} °C</span>
+                    <span class="config-stat-label">Max</span>
                     <span class="config-air-temperature-max-value">{{ Max_Air_Temperature }} °C</span>
                 </div>
             </div>
@@ -53,6 +65,10 @@ export default {
     .content{
         align-items: center;
         flex-direction: column;
+    }
+    .config-stat-label{
+        font-size: 1.5rem;
+        margin: 1rem;
     }
     .config-stats{
         display:flex;
@@ -89,6 +105,14 @@ export default {
         height: 2.5rem;
         border: 0.1rem solid #0000ff;
         font-size: 1.8rem;
+    }
+
+    .fa-droplet{
+        color: #0000ff;
+    }
+
+    .fa-temperature-high,.fa-temperature-low{
+        color:#ff0000
     }
 
 </style>
