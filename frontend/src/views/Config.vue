@@ -92,8 +92,8 @@ export default {
             update(ref(db, 'config/'), {
                 max_ground_temperature:"32",
                 min_ground_temperature:"19",
-                max_ground_humidity:"75",
-                min_ground_humidity:"50",
+                max_ground_humidity:"85",
+                min_ground_humidity:"60",
                 max_air_temperature:"55",
                 min_air_temperature:"15",
                 max_air_humidity:"60",

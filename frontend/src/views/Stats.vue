@@ -3,23 +3,23 @@
       <Header :Title="title"/> 
         <div class="content">
           <div class="stats-container">
-                <div class="ground-temp-stat">
-                    <p class="ground-temp-stat-label">Temperatura</p>
+                <div class="ground-temp-stat">                    
+                    <p class="ground-temp-stat-label"><font-awesome-icon icon="fa-solid fa-temperature-high" />&nbsp;Temperatura</p>
                     <p class="ground-temp-stat-value">{{Ground_Temperature}} °C</p>
                 </div>
 
                 <div class="ground-humidity-stat">
-                    <p class="ground-humidity-stat-label">Umidade</p>
+                    <p class="ground-humidity-stat-label"><font-awesome-icon icon="fa-solid fa-droplet" />&nbsp;Umidade</p>
                     <p class="ground-humidity-stat-value">{{Ground_Humidity}} %</p>
                 </div>
 
                 <div class="air-temp-stat">
-                    <p class="air-temp-stat-label">Temp Ambiente</p>
+                    <p class="air-temp-stat-label"><font-awesome-icon icon="fa-solid fa-temperature-high" />&nbsp;Temp Ambiente</p>
                     <p class="air-temp-stat-value">{{ Air_Temperature }} °C</p>
                 </div>
 
                 <div class="air-humidity-stat">
-                    <p class="air-humidity-stat-label">Umidade Ambiente</p>
+                    <p class="air-humidity-stat-label"><font-awesome-icon icon="fa-solid fa-droplet" />&nbsp;Umidade Ambiente</p>
                     <p class="air-humidity-stat-value">{{ Air_Humidity }} %</p>
 
                 </div>
@@ -65,31 +65,46 @@ export default {
    data(){
         return{
             title:"Cebolinha",
+            Stats_Vector:[15,16,17,18,19,19,16],
+            computed: {
+            myStyles () {
+                return {
+                    height: "50vh",
+                    width:"70vw"
+                }
+            }
+            },
+            // data:()=>({
+            //     loaded: false,
+            //     chartData: null
+            // }),
             data: {
             labels: ['Domingo','Segunda', 'Terça-Feira', 'Quarta-Feira','Quinta-Feira','Sexta-Feira','Sabado'],
             datasets: [
-                { data: [29, 31, 35, 27, 25,31,30],
+                { data: [50, 78, 47, 51, 69, 35,77],
                 label:'Temperatura do Solo',
-                backgroundColor: 'rgba(155, 0, 132, 100)',
+                backgroundColor: 'rgba(255, 0, 0, 100)',
                 borderColor: 'rgba(255, 0, 0, 100)',
                 },
                 { data: [70, 68, 67, 71, 69, 60,70],
                     label:'Umidade do Solo',
-                    backgroundColor: 'rgba(255, 162, 0, 100)',
+                    backgroundColor: 'rgba(0, 255, 0, 100)',
                     borderColor: 'rgba(0, 255, 0, 100)', 
                 },
                 { data: [35, 31, 36, 27, 29,33,30],
                 label:'Temperatura Ambiente',
-                backgroundColor: 'rgba(155, 0, 132, 100)',
+                backgroundColor: 'rgba(0, 0, 255, 100)',
                 borderColor: 'rgba(0, 0, 255, 100)'
                 },
                 { data: [68, 70, 49, 59, 60, 55, 50],
                     label:'Umidade Ambiente',
-                    backgroundColor: 'rgba(54, 162, 235, 100)',
+                    backgroundColor: 'rgba(0, 255, 255, 100)',
                     borderColor: 'rgba(0, 255, 255, 100)', 
                 },
-                ]
-        },
+                ],
+                
+            },
+
             options: {
                 responsive: true,
             },
@@ -98,36 +113,73 @@ export default {
             Ground_Humidity:"",
             Air_Temperature:"",
             Air_Humidity:"",
-            Stats_Vector:[],
+            Stats_Vector:[15,16,17,18,19,19,16],
         }
     },
     mounted(){
+    this.getValues()
     if(auth.currentUser){
       console.log("logado")
     }
 
   },
+  methods:{
+     getValues(){
+      const dados= ref(db)
+        onValue(dados,(snapshot)=>{
+      let dados =JSON.parse(JSON.stringify(snapshot.val().UsersData.readings));
+      const vector= (Object.entries(dados)).slice(-7);
+      const last_reading = (Object.entries(dados)).slice(-1);
+        this.leituras = vector;
+        this.Ground_Temperature=last_reading[0][1].soilTemp;
+         this.Ground_Humidity=last_reading[0][1].moistureHum;
+         this.Air_Temperature=last_reading[0][1].airHum;
+        this.Air_Humidity=last_reading[0][1].airTemp;
+    //airHum: ' 0 ', airTemp: '', moistureHum: '19.1 ', timestamp: '1677596930'
+      //console.log(vector)
+      console.log(this.leituras)
+      console.log(last_reading[0][1].soilTemp)
+     
+
+      //this.leituras= JSON.parse(JSON.stringify(snapshot.val().UsersData));
+     // console.log(dados)
+      //console.log(typeof(dados))
+
+      // console.log(this.leituras.readings[2])
+       //console.log(this.leituras['readings'])
+      //console.log(data)
+      // console.log(data.air_humidity)
+      // get(child(dados,`stats/`)).then((snapshot) => {
+      //   if(snapshot.exists()){
+      //     console.log(snapshot.val())
+      //   }else{
+      //     console.log("não existe")
+      //   }
+      // })
+    })
+      
+    }
+
+  },
   created(){
 
-    const dados= ref(db)
+    
+    
 
-    onValue(dados,(snapshot)=>{
-    const data = snapshot.val().stats;
-        this.Ground_Temperature=snapshot.val().stats.ground_temperature;
-        this.Ground_Humidity=snapshot.val().stats.ground_humidity;
-        this.Air_Temperature=snapshot.val().stats.air_temperature;
-        this.Air_Humidity=snapshot.val().stats.air_humidity;
-        console.log(data)
-    })
+    // const dados= ref(db)
+
+    // onValue(dados,(snapshot)=>{
+    // const data = snapshot.val().stats;
+    //     this.Ground_Temperature=snapshot.val().stats.ground_temperature;
+    //     this.Ground_Humidity=snapshot.val().stats.ground_humidity;
+    //     this.Air_Temperature=snapshot.val().stats.air_temperature;
+    //     this.Air_Humidity=snapshot.val().stats.air_humidity;
+    //     console.log(data)
+    // })
 },
-    computed: {
-    myStyles () {
-      return {
-        height: "50vh",
-        width:"70vw"
-      }
-    }
-  }
+    
+  
+  
 }
 </script>
 <style scoped>

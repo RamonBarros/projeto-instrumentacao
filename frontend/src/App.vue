@@ -10,33 +10,72 @@ import { ref, onValue, get, child} from "firebase/database";
 export default {
   data() {
     return {
-      
+      leituras:[],
+      leiturasArray:[],
     }
+  },
+  methods:{
+    //  getValues(){
+    //   const dados= ref(db)
+    //     onValue(dados,(snapshot)=>{
+    //   let dados =JSON.parse(JSON.stringify(snapshot.val().UsersData.readings));
+    //   const vector= (Object.entries(dados)).slice(-7);
+    //   this.leituras = vector;
+    //   console.log(vector)
+    //   console.log(this.leituras)
+     
+
+    //   //this.leituras= JSON.parse(JSON.stringify(snapshot.val().UsersData));
+    //  // console.log(dados)
+    //   //console.log(typeof(dados))
+
+    //   // console.log(this.leituras.readings[2])
+    //    //console.log(this.leituras['readings'])
+    //   //console.log(data)
+    //   // console.log(data.air_humidity)
+    //   // get(child(dados,`stats/`)).then((snapshot) => {
+    //   //   if(snapshot.exists()){
+    //   //     console.log(snapshot.val())
+    //   //   }else{
+    //   //     console.log("não existe")
+    //   //   }
+    //   // })
+    // })
+      
+    // }
+
   },
   mounted() {
 
     if(auth.currentUser){
       console.log("logado")
-    } else(
-      this.$router.push('/')
-    )
+    } 
+    // else(
+    //   this.$router.push('/')
+    // )
   },
-  created(){
+   created(){
+    //this.getValues()
+    // const dados= ref(db)
+    // onValue(dados,(snapshot)=>{
+    //   const data = snapshot.val().UsersData.readings.Target;
+    //   this.leituras= JSON.stringify(snapshot.val().UsersData);
+    //   this.leiturasArray=this.leituras.readings
 
-    const dados= ref(db)
-    
-    onValue(dados,(snapshot)=>{
-      const data = snapshot.val().stats;
-      console.log(data)
-      // console.log(data.air_humidity)
-      // get(child(dados,`stats/`)).then((snapshot) => {
-      //   if(snapshot.exists()){
-      //     console.log(snapshot.val())
-      //   }else{
-      //     console.log("não existe")
-      //   }
-      // })
-    })
+    //   //console.log(data)
+    //   console.log(this.leituras)
+    //   console.log(this.leiturasArray)
+    //   //console.log(data)
+    //   // console.log(data.air_humidity)
+    //   // get(child(dados,`stats/`)).then((snapshot) => {
+    //   //   if(snapshot.exists()){
+    //   //     console.log(snapshot.val())
+    //   //   }else{
+    //   //     console.log("não existe")
+    //   //   }
+    //   // })
+    // })
+   
   }
 
 
