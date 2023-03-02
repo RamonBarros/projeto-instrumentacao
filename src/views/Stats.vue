@@ -62,6 +62,7 @@ export default {
        Bar,
        Line
    },
+   
    data(){
         return{
             title:"Cebolinha",
@@ -72,12 +73,14 @@ export default {
                     height: "50vh",
                     width:"70vw"
                 }
-            }
+            },
+            
             },
             // data:()=>({
             //     loaded: false,
-            //     chartData: null
+            //     data: null
             // }),
+
             data: {
             labels: ['Domingo','Segunda', 'Terça-Feira', 'Quarta-Feira','Quinta-Feira','Sexta-Feira','Sabado'],
             datasets: [
@@ -121,7 +124,7 @@ export default {
     if(auth.currentUser){
       console.log("logado")
     }
-
+    
   },
   methods:{
      getValues(){
@@ -139,6 +142,7 @@ export default {
       //console.log(vector)
       console.log(this.leituras)
       console.log(last_reading[0][1].soilTemp)
+      
      
 
       //this.leituras= JSON.parse(JSON.stringify(snapshot.val().UsersData));

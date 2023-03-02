@@ -50,9 +50,9 @@ export default {
     if(auth.currentUser){
       console.log("logado")
     } 
-    // else(
-    //   this.$router.push('/')
-    // )
+    else(
+      this.$router.push('/')
+    )
   },
    created(){
     //this.getValues()
