@@ -32,6 +32,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* border-radius: 0px 0px 40px 40px;  */
 }
 
 .header-Title{
@@ -53,4 +54,25 @@ export default {
     position: absolute;
 }
     
+@media screen and (max-width: 600px) {
+
+.header-Main{
+    background-color: #064B15;
+    width: 100vw;
+    height: 15vh;
+    /* border-radius: 0px 0px 40px 40px;  */
+}
+.header-Title{
+    font-size: 4vh;
+    margin:2rem;
+}
+.back-button{
+    display: flex;
+    padding: 1rem;
+    margin-left: 75vw;
+    font-size: 1rem;
+    border-radius: 40px;
+}
+
+}
 </style>

@@ -2,14 +2,19 @@
     <div class="main">
         <div class="box-login">
             <form @submit.prevent="login()">
-            <p class="login-label">Tela de Login</p>
+            <div class="centralize-box">
+                <p class="login-label">Tela de Login</p>
+            </div>
             <div class="input-box">
                 <input class="input" type="email" placeholder="Usuario" required v-model="email">
                 <input class="input" type="password" placeholder="Senha" required v-model="password">
             </div>
             <p class="signup-label">Não tem uma conta?</p>
-            <button class="login-btn" @click="login">Entrar</button>
-        </form>
+            <div class="btn-box">
+                <button class="login-btn" @click="login">Entrar</button>
+            </div>
+        
+            </form>
         </div>
         
     </div>
@@ -49,31 +54,46 @@ export default {
 <style scoped>
 .main{
     background-image: url(../../public/imgs/TelaLogin.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     justify-content: center;
     align-items: center;
 }
 .box-login{
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 65vh;
+    width: 45vw;
     height: 35vh;
     border-radius: 50px;
     background-color: #fff;
 }
+.btn-box{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.centralize-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
 
 .input-box{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 .input{
     background-color: #064B15;
     border-radius: 30px;
-    width: 25vw;
+    width: 30vw;
     height: 3.5vh;
     margin: 0.8vw;
     color: #fff;
@@ -87,7 +107,7 @@ export default {
 
 .login-label{
     font-size: 3vw;
-    margin: 1rem 1rem 0rem 5rem;
+    margin: 0px;
 }
 
 .login-btn{
@@ -97,7 +117,6 @@ export default {
     width: 7w;
     height: 5vh;
     font-size: 1.5vw;
-    
 }
 
 .signup-label{
@@ -105,4 +124,27 @@ export default {
     margin-right: 15vw;
 }
 
+@media screen and (max-width: 600px) {
+  .box-login {
+    width: 75vw;
+    height: 22vh;
+  }
+  .input{
+    width: 60vw;
+    height: 3vh;
+    margin: 0.8vw;
+  }
+  .login-btn{
+    border-radius: 20px;
+    width: 12vw;
+    height: 4vh;
+    font-size: 2.5vw;
+}
+
+.login-label{
+    font-size: 6vw;
+    margin: 0px;
+}
+
+}
 </style>

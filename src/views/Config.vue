@@ -188,4 +188,48 @@ export default {
         border-radius: 50px;
     }
 
+    @media screen and (max-width: 600px) {
+    .content{
+        width: 100%;
+    }
+
+    .config-stat-label{
+        font-size: 1rem;
+        margin: 0.5rem;
+    }
+    .config-ground-humidity,.config-air-humidity,.config-ground-temperature,.config-air-temperature{
+        margin: 0rem;
+        font-size: 1rem;
+
+    }
+    .config-ground-humidity-label,.config-ground-humidity-max-value,.config-ground-humidity-min-value,
+    .config-air-humidity-label,.config-air-humidity-max-value,.config-air-humidity-min-value,.config-ground-temperature-label,
+    .config-ground-temperature-max-value,.config-ground-temperature-min-value,.config-air-temperature-label,
+    .config-air-temperature-max-value,.config-air-temperature-min-value{
+        width: 30vw;
+    }
+
+
+
+    .config-air-humidity-max-value,.config-air-humidity-min-value,.config-air-temperature-max-value,.config-air-temperature-min-value,
+    .config-ground-humidity-max-value,.config-ground-humidity-min-value,.config-ground-temperature-max-value,.config-ground-temperature-min-value{
+        justify-content: center;
+        width: 3rem;
+        height: 1.5rem;
+        border: 0.1rem solid #0000ff;
+        font-size: 1rem;
+    }
+
+
+    .config-button{
+        background-color: #064B15;
+        color: #ffff;
+        font-size: 1rem;
+        width: 20vw;
+        height: 5vh;
+        margin: 1rem;
+        border-radius: 50px;
+    }
+}
+
 </style>

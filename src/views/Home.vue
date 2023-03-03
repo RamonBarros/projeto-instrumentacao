@@ -78,5 +78,22 @@ export default {
     display: flex;
     justify-content: flex-start;
 }
+
+@media screen and (max-width: 600px) {
+.plant-button{ 
+    width: 25vw;
+    height: 10vh;
+    font-size: 4vw;
+    margin: 4vh 1rem 4vh 8vh;
+}
+.plant-config-button{
+    border-radius: 100%;
+    margin-left: 0px;
+    width: 8vw;
+    height: 8vw
+}
+
+
+}
     
 </style>

@@ -135,9 +135,13 @@ export default {
       const last_reading = (Object.entries(dados)).slice(-1);
         this.leituras = vector;
         this.Ground_Temperature=last_reading[0][1].soilTemp;
-         this.Ground_Humidity=last_reading[0][1].moistureHum;
-         this.Air_Temperature=last_reading[0][1].airHum;
+        this.Ground_Humidity=last_reading[0][1].moistureHum;
+        this.Air_Temperature=last_reading[0][1].airHum;
         this.Air_Humidity=last_reading[0][1].airTemp;
+        // this.Ground_Temperature=35
+        // this.Ground_Humidity=60;
+        // this.Air_Temperature=34;
+        // this.Air_Humidity=75;
     //airHum: ' 0 ', airTemp: '', moistureHum: '19.1 ', timestamp: '1677596930'
       //console.log(vector)
       console.log(this.leituras)
@@ -214,25 +218,55 @@ export default {
 .ground-temp-stat-label,.air-temp-stat-label,.air-humidity-stat-label,.ground-humidity-stat-label{
     font-size: 2.5vw;
     padding: 0;
-    margin: 1px 1rem 1px 1px;
+    margin: 0rem 1rem 0rem 1rem;
 }
 
 .air-temp-stat-label,.air-humidity-stat-label{
     font-size: 2vw;
-    margin: 1px 2rem 1px 1px;
+    margin: 0rem 1rem 0rem 1rem;
 }
 .ground-temp-stat-value,.air-temp-stat-value,.air-humidity-stat-value,.ground-humidity-stat-value{
     font-size: 4rem;
+    margin: 1rem 1rem 1rem 1rem;
+}
+
+.graph-stats{
+    display: flex;
+    justify-content: center;
+    height: 30vw;
+    width: 70vw;
+}
+
+@media screen and (max-width: 600px) {
+.ground-temp-stat,.air-temp-stat,.air-humidity-stat,.ground-humidity-stat{
+    margin:1rem 0.8rem 1rem 0.2rem;
+    width: 20vw;
+    height: 10vh;
+    border-radius: 20px;
+}
+.ground-temp-stat-label,.air-temp-stat-label,.air-humidity-stat-label,.ground-humidity-stat-label{
+    font-size: 2.5vw;
+    padding: 0rem;
+    margin: 1rem 1rem 0rem 0rem;
+}
+
+.air-temp-stat-label,.air-humidity-stat-label{
+    font-size: 2.8vw;
+    padding: 0rem;
+    margin: 1rem 0rem 0rem 1rem;
+}
+.ground-temp-stat-value,.air-temp-stat-value,.air-humidity-stat-value,.ground-humidity-stat-value{
+    font-size: 1.25rem;
     margin: 1px 1rem 1px 1px;
 }
 
 .graph-stats{
     display: flex;
     justify-content: center;
-    height: 27vw;
-    width: 70vw;
+    height: 50vw;
+    width: 100vw;
 }
 
-
+}
 
 </style>
