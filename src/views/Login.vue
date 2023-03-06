@@ -65,7 +65,7 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 45vw;
+    width: 35vw;
     height: 35vh;
     border-radius: 50px;
     background-color: #fff;
