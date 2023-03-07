@@ -84,17 +84,17 @@ export default {
             data: {
             labels: ['Domingo','Segunda', 'Terça-Feira', 'Quarta-Feira','Quinta-Feira','Sexta-Feira','Sabado'],
             datasets: [
-                { data: [50, 78, 47, 51, 69, 35,77],
+                { data: [25, 27, 24, 28, 27, 22,25],
                 label:'Temperatura do Solo',
                 backgroundColor: 'rgba(255, 0, 0, 100)',
                 borderColor: 'rgba(255, 0, 0, 100)',
                 },
-                { data: [70, 68, 67, 71, 69, 60,70],
+                { data: [77, 65, 73, 71, 69, 67,70],
                     label:'Umidade do Solo',
                     backgroundColor: 'rgba(0, 255, 0, 100)',
                     borderColor: 'rgba(0, 255, 0, 100)', 
                 },
-                { data: [35, 31, 36, 27, 29,33,30],
+                { data: [25, 26, 28, 27, 24,26,25],
                 label:'Temperatura Ambiente',
                 backgroundColor: 'rgba(0, 0, 255, 100)',
                 borderColor: 'rgba(0, 0, 255, 100)'
@@ -135,7 +135,7 @@ export default {
       const last_reading = (Object.entries(dados)).slice(-1);
         this.leituras = vector;
         this.Ground_Temperature=last_reading[0][1].soilTemp;
-        this.Ground_Humidity=last_reading[0][1].moistureHum;
+        this.Ground_Humidity=((last_reading[0][1].moistureHum)/1024)*100;
         this.Air_Temperature=last_reading[0][1].airHum;
         this.Air_Humidity=last_reading[0][1].airTemp;
         // this.Ground_Temperature=35
