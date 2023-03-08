@@ -1,7 +1,10 @@
 <template>
     <div class="main">
         <Header :Title="title"/> 
-       <div class="content">
+        <div class="content">
+            <div class="menu">
+                <!-- <NavBar/> -->
+            </div>
            <div class="plant-button-container">
                <button class="plant-button" @click="goToStats()">Cebolinha</button>
                <button class="plant-config-button" @click="goToConfig()"><font-awesome-icon icon="fa-solid fa-gear" /></button>
@@ -11,12 +14,14 @@
 </template>
 
 <script>
+import NavBar from "@/components/NavBar.vue"
 import Header from "../components/Header.vue"
 import { auth } from '../firebase/index.js'
 export default {
     components:{
-        Header
-    },
+    Header,
+    NavBar
+},
     methods: {
         goToStats(){
             this.$router.push("/stats")
@@ -48,6 +53,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: fit-content;
 }
 .plant-button{
     display: flex;

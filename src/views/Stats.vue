@@ -76,10 +76,6 @@ export default {
             },
             
             },
-            // data:()=>({
-            //     loaded: false,
-            //     data: null
-            // }),
 
             data: {
             labels: ['Domingo','Segunda', 'Terça-Feira', 'Quarta-Feira','Quinta-Feira','Sexta-Feira','Sabado'],
@@ -112,10 +108,10 @@ export default {
                 responsive: true,
             },
 
-            Ground_Temperature:"",
+            Ground_Temperature:"19.32",
             Ground_Humidity:"",
-            Air_Temperature:"",
-            Air_Humidity:"",
+            Air_Temperature:"20.31",
+            Air_Humidity:"60",
             Stats_Vector:[15,16,17,18,19,19,16],
         }
     },
@@ -135,9 +131,9 @@ export default {
       const last_reading = (Object.entries(dados)).slice(-1);
         this.leituras = vector;
         this.Ground_Temperature=last_reading[0][1].soilTemp;
-        this.Ground_Humidity=((last_reading[0][1].moistureHum)/1024)*100;
-        this.Air_Temperature=last_reading[0][1].airHum;
-        this.Air_Humidity=last_reading[0][1].airTemp;
+        this.Ground_Humidity=Math.round(((last_reading[0][1].moistureHum)/1024)*100);
+        this.Air_Temperature=last_reading[0][1].airTemp;
+        this.Air_Humidity=last_reading[0][1].airHum;
         // this.Ground_Temperature=35
         // this.Ground_Humidity=60;
         // this.Air_Temperature=34;

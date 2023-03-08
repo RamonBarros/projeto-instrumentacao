@@ -3,6 +3,9 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Stats from '../views/Stats.vue'
 import Config from '../views/Config.vue'
+import CatalogSheet from '../views/CatalogSheet.vue'
+import Sources from '../views/Sources.vue'
+import Apresentation from '../views/Apresentation.vue'
 
 const routes = [
   {
@@ -24,6 +27,21 @@ const routes = [
     path: '/stats',
     name: 'stats',
     component: Stats
+  },
+  {
+    path: '/catalog',
+    name: 'catalogSheet',
+    component: CatalogSheet
+  },
+  {
+    path: '/sources',
+    name: 'sources',
+    component: Sources
+  },
+  {
+    path: '/apresentation',
+    name: 'apresentation',
+    component: Apresentation
   },
   
 ]
