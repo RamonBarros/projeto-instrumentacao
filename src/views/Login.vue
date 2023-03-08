@@ -3,7 +3,8 @@
         <div class="box-login">
             <form @submit.prevent="login()">
             <div class="centralize-box">
-                <p class="login-label">Tela de Login</p>
+                <img src="../../public/imgs/PEV-aprovado-pelo-MEC.png" id="logo-pev">
+                <p class="login-label">HortaTech</p>
             </div>
             <div class="input-box">
                 <input class="input" type="email" placeholder="Usuario" required v-model="email">
@@ -60,13 +61,18 @@ export default {
     justify-content: center;
     align-items: center;
 }
+
+#logo-pev{
+    width: 100px;
+    height: 100px;
+}
 .box-login{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 35vw;
-    height: 35vh;
+    height: 40vh;
     border-radius: 50px;
     background-color: #fff;
 }
@@ -82,7 +88,6 @@ export default {
     align-items: center;
    
 }
-
 
 .input-box{
     display: flex;
